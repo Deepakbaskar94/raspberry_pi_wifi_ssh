@@ -1,0 +1,28 @@
+
+sudo vi /etc/systemd/system/ledScript.service
+
+[Unit]
+Description=example systemd custom 
+After=Network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/python /home/pi/led/main.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+
+//to enable the permission
+sudo chmod 777 /etc/systemd/system/ledScript.service
+
+//to enable the script
+sudo systemctl enable ledScript
+
+//to start the service
+sudo systemctl start ledScript
+
+
+//to get the status
+sudo systemctl status ledScript[Unit]
